@@ -11,15 +11,25 @@
   "repository": "jsdom/whatwg-encoding",
   "main": "lib/whatwg-encoding.js",
   "files": [
+    "index.js",
+    "webidl2js-wrapper.js",
     "lib/"
   ],
+  "engines": {
+    "node": ">=10"
+  },
   "scripts": {
+    "build": "node scripts/update.js && node scripts/convert-idl.js",
+    "prepare": "node scripts/update.js && node scripts/convert-idl.js",
+    "pretest": "node scripts/get-latest-platform-tests.js && node scripts/transform.js && node scripts/convert-idl.js",
+    "build-live-viewer": "browserify index.js --standalone whatwgEncoding > live-viewer/whatwg-encoding.js",
     "test": "mocha",
-    "lint": "eslint lib test",
-    "prepare": "node scripts/update.js"
+    "lint": "eslint lib test"
   },
   "dependencies": {
-    "iconv-lite": "0.4.24"
+    "iconv-lite": "0.4.24",
+    "text-encoding": "0.7.0",
+    "webidl2js": "15.1.0"
   },
   "devDependencies": {
     "eslint": "^5.3.0",
