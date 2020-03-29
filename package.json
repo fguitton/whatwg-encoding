@@ -29,7 +29,6 @@
   },
   "dependencies": {
     "iconv-lite": "^0.5.1",
-    "text-encoding": "^0.7.0",
     "webidl-conversions": "^6.0.0"
   },
   "devDependencies": {
